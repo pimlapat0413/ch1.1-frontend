@@ -1,8 +1,10 @@
+```vue
 <template>
   <q-page padding>
     <div class="text-h4 q-mb-md">
       Version Control + Docker Demo (Quasar)
     </div>
+
 
     <q-card class="q-mb-md">
       <q-card-section>
@@ -21,7 +23,8 @@
       </q-card-section>
     </q-card>
 
-    <q-card class="q-mb-md">
+
+    <q-card>
       <q-card-section>
         <div class="text-h6">Docker Concepts (สรุปสั้น ๆ)</div>
         <q-list bordered separator class="q-mt-sm">
@@ -34,24 +37,9 @@
         </q-list>
       </q-card-section>
     </q-card>
-
-    <q-card>
-      <q-card-section>
-        <div class="text-h6">Docker Quick Reference</div>
-        <q-list bordered separator class="q-mt-sm">
-          <q-item v-for="(cmd, index) in dockerQuickRef" :key="index">
-            <q-item-section>
-              <q-item-label>
-                <code class="text-primary">{{ cmd.command }}</code>
-              </q-item-label>
-              <q-item-label caption>{{ cmd.description }}</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-card-section>
-    </q-card>
   </q-page>
 </template>
+
 
 <script setup>
 const gitSteps = [
@@ -77,6 +65,7 @@ const gitSteps = [
   },
 ]
 
+
 const dockerItems = [
   {
     title: 'Image',
@@ -95,27 +84,5 @@ const dockerItems = [
     detail: 'ให้บริการใน Docker ติดต่อกันได้ เช่น Nginx ส่งต่อคำขอไปยัง Express',
   },
 ]
-
-const dockerQuickRef = [
-  {
-    command: 'docker build -t my-quasar-frontend:latest -f frontend/Dockerfile ./frontend',
-    description: 'ใช้เมื่อต้องการสร้าง Docker Image จากไฟล์ Dockerfile ในโฟลเดอร์ frontend',
-  },
-  {
-    command: 'docker run -d -p 8080:80 --name my-quasar-frontend-container my-quasar-frontend:latest',
-    description: 'ใช้เมื่อต้องการรัน Container ในโหมดเบื้องหลังและเชื่อมพอร์ต 8080 ของเครื่องกับพอร์ต 80 ของ Nginx',
-  },
-  {
-    command: 'docker compose up -d --build',
-    description: 'ใช้เมื่อต้องการ build Image ใหม่และเริ่มรันบริการทั้งหมดใน docker-compose.yml พร้อมกันในเบื้องหลัง',
-  },
-  {
-    command: 'docker compose ps',
-    description: 'ใช้เมื่อต้องการตรวจสอบสถานะของบริการและพอร์ตที่เปิดใช้งานอยู่ใน Docker Compose',
-  },
-  {
-    command: 'docker compose down',
-    description: 'ใช้เมื่อต้องการหยุดการทำงานและลบ Container รวมถึง Network ที่สร้างโดย Docker Compose ออกทั้งหมด',
-  },
-]
 </script>
+```
